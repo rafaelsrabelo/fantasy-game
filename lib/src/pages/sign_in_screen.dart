@@ -1,7 +1,9 @@
 import 'package:fantasygame/src/base/base_screen.dart';
+import 'package:fantasygame/src/pages/remember_me.dart';
 import 'package:fantasygame/src/pages/sign_up_screen.dart';
 import 'package:fantasygame/src/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -18,27 +20,22 @@ class SignInScreen extends StatelessWidget {
           width: size.width,
           child: Column(
             children: [
-              const Expanded(
+              Expanded(
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text.rich(
-                      TextSpan(
+                    Text.rich(TextSpan(
                         style: TextStyle(
                           fontSize: 40,
                         ),
-                        children: [
-                         
-                        ]
-                      )
+                        children: [])),
+                    Text(
+                      'X1 Fantasy',
+                      style: GoogleFonts.karantina(
+                          fontSize: 56,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
-                    Text('',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18
-                    ),
-                    )
                   ],
                 ),
               ),
@@ -52,10 +49,15 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
+                    Center(
+                      child: Text('Login', style: TextStyle(fontSize: 20 )),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
                     const CustomTextiField(
                       icon: Icons.email,
                       label: 'Email',
-
                     ),
                     const CustomTextiField(
                       icon: Icons.password,
@@ -70,19 +72,28 @@ class SignInScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c) {
+                            Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(builder: (c) {
                               return const BaseScreen();
                             }));
                           },
                           child: const Text(
                             'Entrar',
-                            style: TextStyle(fontSize: 16, color: Colors.white, fontWeight: FontWeight.normal),
+                            style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.white,
+                                fontWeight: FontWeight.normal),
                           )),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (c) {
+                              return RememberMe();
+                            }));
+                          },
                           child: const Text(
                             'Esqueceu a senha?',
                             style: TextStyle(color: Colors.red),
@@ -114,26 +125,28 @@ class SignInScreen extends StatelessWidget {
                     SizedBox(
                       width: 50,
                       child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18),
+                          style: OutlinedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18),
+                            ),
+                            side: BorderSide(
+                              width: 1,
+                              color: Color(0xff1D927B),
+                            ),
                           ),
-                          side: BorderSide(
-                            width: 1,
-                            color: Color(0xff1D927B),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (c) {
-                                return SignUpScreen();
-                              } )
-                          );
-                        }, 
-                        child: const Text('Criar conta',
-                          style: TextStyle(fontSize: 16, fontWeight: FontWeight.normal, color: Color(0xff1D927B)),
-                        )),
+                          onPressed: () {
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (c) {
+                              return SignUpScreen();
+                            }));
+                          },
+                          child: const Text(
+                            'Criar conta',
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.normal,
+                                color: Color(0xff1D927B)),
+                          )),
                     ),
                   ],
                 ),

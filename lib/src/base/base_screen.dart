@@ -1,3 +1,4 @@
+import 'package:fantasygame/src/pages/home_tab.dart';
 import 'package:flutter/material.dart';
 
 class BaseScreen extends StatefulWidget {
@@ -20,7 +21,7 @@ class _BaseScreenState extends State<BaseScreen> {
         physics: NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
-          Container(color: Colors.yellow),
+          HomeTab(),
           Container(color: Colors.blue),
           Container(color: Colors.green),
         ],
@@ -35,12 +36,12 @@ class _BaseScreenState extends State<BaseScreen> {
         },
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Color(0xff1D927B),
         unselectedItemColor: Colors.grey[500],
         items: const [
         BottomNavigationBarItem(icon: Icon(Icons.home_outlined), label: 'Home'),
-        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_checkout_outlined), label: 'Carrinho'),
-        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Pedidos'),
+        BottomNavigationBarItem(icon: Icon(Icons.shopping_cart_checkout_outlined), label: 'Apostas'),
+        BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Ranking'),
       ]),
     );
   }

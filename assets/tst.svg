@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" viewBox="0 0 300 300">
+  <!-- Céu -->
+  <rect width="300" height="300" fill="#87CEEB" />
+
+  <!-- Sol -->
+  <circle cx="250" cy="50" r="30" fill="#FFD700" />
+
+  <!-- Pote de mel -->
+  <path d="M100,200 Q150,100 200,200 L100,200" fill="#8B4513" />
+
+  <!-- Mel -->
+  <circle cx="150" cy="180" r="25" fill="#FFD700" />
+
+  <!-- Abelha -->
+  <circle cx="150" cy="100" r="20" fill="#000000" />
+  <circle cx="150" cy="100" r="17" fill="#FDD835" />
+  <circle cx="158" cy="95" r="5" fill="#FFFFFF" />
+  <circle cx="142" cy="95" r="5" fill="#FFFFFF" />
+
+  <!-- Asas -->
+  <path d="M130,85 Q150,60 170,85 Q150,75 130,85" fill="#FFFFFF" />
+  <path d="M130,115 Q150,140 170,115 Q150,125 130,115" fill="#FFFFFF" />
+
+  <!-- Queda da abelha -->
+  <animateMotion dur="3s" repeatCount="indefinite">
+    <mpath xlink:href="#motionPath" />
+  </animateMotion>
+
+  <!-- Caminho de movimento da abelha -->
+  <path id="motionPath" d="M100,100 Q150,150 200,100" fill="none" />
+
+</svg>
