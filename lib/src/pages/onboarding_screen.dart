@@ -19,13 +19,13 @@ class OnBoardingScreen extends StatelessWidget {
           children: [
             Column(
               children: [
-                SizedBox(height: 20),
+                const SizedBox(height: 20),
                 SvgPicture.asset(
                   'assets/onboarding.svg',
                   height: 237,
                   width: 250,
                 ),
-                SizedBox(height: 50),
+                const SizedBox(height: 50),
                 Text(
                   'X1 Fantasy',
                   style: GoogleFonts.rubik(
@@ -57,7 +57,7 @@ class OnBoardingScreen extends StatelessWidget {
                     ),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(builder: (c) {
-                        return SignInScreen();
+                        return const SignInScreen();
                       }));
                     },
                     child: const Text(

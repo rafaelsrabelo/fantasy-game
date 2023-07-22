@@ -61,6 +61,7 @@ class _HomeTabState extends State<HomeTab> {
             child: SearchField(
               hintText: 'Busque um jogo',
               onChanged: (value) {
+                
                 // Coloque aqui o código para lidar com a mudança no campo de pesquisa
               },
             ),
