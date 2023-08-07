@@ -1,5 +1,4 @@
-import 'package:fantasygame/src/pages/onboarding_screen.dart';
-import 'package:fantasygame/src/pages/sign_in_screen.dart';
+import 'package:fantasygame/src/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +18,8 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white.withAlpha(190)
       ),
       debugShowCheckedModeBanner: false,
-      home: const OnBoardingScreen(),
+      initialRoute: 'onboarding',
+      routes: Routes.routes,
     );
   }
 }

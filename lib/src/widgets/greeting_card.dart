@@ -24,7 +24,7 @@ class GreetingCard extends StatelessWidget {
             RichText(
               text: TextSpan(
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 16,
                   color: Colors.black,
                 ),
                 children: [
@@ -43,7 +43,7 @@ class GreetingCard extends StatelessWidget {
               onPressed: onActivate,
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 primary: Color(0xff1D927B),
               ),

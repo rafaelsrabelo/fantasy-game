@@ -1,7 +1,6 @@
 import 'package:fantasygame/src/widgets/custom_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
 class RememberMe extends StatelessWidget {
   RememberMe({super.key});
@@ -24,7 +23,7 @@ class RememberMe extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text.rich(TextSpan(
+                        const Text.rich(TextSpan(
                             style: TextStyle(
                               fontSize: 40,
                             ),
@@ -49,21 +48,22 @@ class RememberMe extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Center(
+                        const Center(
                           child: Text('Esqueceu a senha?',
                               style: TextStyle(
                                 fontSize: 20,
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
-                        CustomTextiField(icon: Icons.person, label: 'Nome'),
+                        const CustomTextiField(
+                            icon: Icons.person, label: 'Nome'),
                         SizedBox(
                           height: 40,
                           child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
-                                  backgroundColor: Color(
+                                  backgroundColor: const Color(
                                       0xff1D927B), // Defina a cor desejada aqui
                                   shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18))),

@@ -9,12 +9,12 @@ class CustomTextiField extends StatefulWidget {
   final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextiField({
-    super.key, 
+    Key? key, // Correção aqui
     required this.icon, 
     required this.label, 
     this.isSecret = false,
     this.inputFormatters,
-    });
+  }) : super(key: key); // A chave super deve estar aqui, removida dos parâmetros
 
   @override
   State<CustomTextiField> createState() => _CustomTextiFieldState();

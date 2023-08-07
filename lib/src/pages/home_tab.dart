@@ -1,9 +1,8 @@
+import 'package:fantasygame/src/config/api_config.dart';
 import 'package:fantasygame/src/pages/onboarding_screen.dart';
-import 'package:fantasygame/src/widgets/categpry_title.dart';
 import 'package:fantasygame/src/widgets/greeting_card.dart';
 import 'package:fantasygame/src/widgets/search_field.dart';
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart' as badges;
 
 class HomeTab extends StatefulWidget {
   HomeTab({super.key});
@@ -31,12 +30,18 @@ class _HomeTabState extends State<HomeTab> {
                   return OnBoardingScreen();
                 }));
               },
-              icon: Icon(Icons.exit_to_app),
+              icon: IconButton(
+                  icon: const Icon(Icons.exit_to_app),
+                  onPressed: () {
+                    ApiConfig.logout()
+                        .then((value) => {Navigator.pushNamed(context, 'onboarding')});
+                  }),
               color: Colors.black,
             ),
           ),
         ],
-        title: Text.rich(TextSpan(style: TextStyle(fontSize: 30), children: [
+        title:
+            const Text.rich(TextSpan(style: TextStyle(fontSize: 30), children: [
           TextSpan(
               text: 'Home',
               style: TextStyle(color: Colors.black, fontSize: 20)),
@@ -46,7 +51,7 @@ class _HomeTabState extends State<HomeTab> {
       // Campo de pesquisa
       body: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -60,10 +65,7 @@ class _HomeTabState extends State<HomeTab> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: SearchField(
               hintText: 'Busque um jogo',
-              onChanged: (value) {
-                
-                // Coloque aqui o código para lidar com a mudança no campo de pesquisa
-              },
+              onChanged: (value) {},
             ),
           ),
         ],

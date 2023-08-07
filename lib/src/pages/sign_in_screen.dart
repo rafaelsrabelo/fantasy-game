@@ -1,12 +1,40 @@
-import 'package:fantasygame/src/base/base_screen.dart';
+import 'package:fantasygame/src/config/api_config.dart';
 import 'package:fantasygame/src/pages/remember_me.dart';
 import 'package:fantasygame/src/pages/sign_up_screen.dart';
-import 'package:fantasygame/src/widgets/custom_text_field.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class SignInScreen extends StatelessWidget {
+
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  final String _email = 'rafaelrabelodev@gmail.com';
+  final String _password = '123123';
+
+  void _login() async {
+    if (kDebugMode) {
+      print('Username: $_email');
+      print('Password: $_password');
+    }
+    try {
+      await ApiConfig.authenticate(_email, _password);
+      if (context.mounted) {
+        Navigator.pushNamed(context, 'home');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Login ou Senha inválidos'),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +52,7 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text.rich(TextSpan(
+                    const Text.rich(TextSpan(
                         style: TextStyle(
                           fontSize: 40,
                         ),
@@ -49,21 +77,16 @@ class SignInScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
-                    Center(
-                      child: Text('Login', style: TextStyle(fontSize: 20 )),
+                    const Center(
+                      child: Text('Login', style: TextStyle(fontSize: 20)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 20,
                     ),
-                    const CustomTextiField(
-                      icon: Icons.email,
-                      label: 'Email',
-                    ),
-                    const CustomTextiField(
-                      icon: Icons.password,
-                      label: 'Senha',
-                      isSecret: true,
-                    ),
+                    _buildEmailField(),
+                    const SizedBox(height: 20.0),
+                    _buildPasswordField(),
+                    const SizedBox(height: 20.0),
                     SizedBox(
                       height: 40,
                       child: ElevatedButton(
@@ -72,10 +95,7 @@ class SignInScreen extends StatelessWidget {
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18))),
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                                MaterialPageRoute(builder: (c) {
-                              return const BaseScreen();
-                            }));
+                            _login();
                           },
                           child: const Text(
                             'Entrar',
@@ -129,7 +149,7 @@ class SignInScreen extends StatelessWidget {
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18),
                             ),
-                            side: BorderSide(
+                            side: const BorderSide(
                               width: 1,
                               color: Color(0xff1D927B),
                             ),
@@ -154,6 +174,33 @@ class SignInScreen extends StatelessWidget {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildEmailField() {
+    return TextFormField(
+      controller: TextEditingController(text: _email),
+      style: const TextStyle(color: Colors.black),
+      decoration: const InputDecoration(
+        labelText: 'Usuário',
+        labelStyle: TextStyle(color: Colors.black),
+        enabledBorder:
+            UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
+      ),
+    );
+  }
+
+  Widget _buildPasswordField() {
+    return TextFormField(
+      controller: TextEditingController(text: _password),
+      style: const TextStyle(color: Colors.black),
+      obscureText: true,
+      decoration: const InputDecoration(
+        labelText: 'Senha',
+        labelStyle: TextStyle(color: Colors.black),
+        enabledBorder:
+            UnderlineInputBorder(borderSide: BorderSide(color: Colors.black)),
       ),
     );
   }
